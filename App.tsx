@@ -1,12 +1,11 @@
 import React from 'react';
 import {Image, ScrollView, Text, TextInput, View} from 'react-native';
-import CuteCat from './components/CuteCat';
-import PizzaTranslator from './components/PizzaTranslator';
+import AddFriends from './components/AddFriends';
 
 function App(): React.JSX.Element {
   return (
     <ScrollView>
-      <PizzaTranslator />
+      <AddFriends/>
     </ScrollView>
   );
 }

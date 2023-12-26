@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ScrollView, Text, TextInput, StyleSheet, Button } from "react-native";
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import { Input, Icon } from '@rneui/themed';
 
 function AddFriends() {
 
@@ -25,11 +26,10 @@ function AddFriends() {
         <ScrollView>
             <Text>친구정보 입력</Text>
             
-            <TextInput  
-                style={styles.input}
-                value={name}
+            <Input
+                placeholder='ex) 조건우'
+                label='이름'
                 onChangeText={(newText: string) => setName(newText)}
-                placeholder="친구이름 입력"
             />
 
             <Text style={styles.input}>생일: {birthday.toLocaleDateString()}</Text>
@@ -40,7 +40,6 @@ function AddFriends() {
                 display="spinner"
                 onChange={onDateChange}
             />
-            
         </ScrollView>
     );
 }

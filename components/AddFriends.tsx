@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { ScrollView, Text, TextInput, StyleSheet } from "react-native";
-import DateTimePicker from '@react-native-community/datetimepicker';
+import { ScrollView, Text, TextInput, StyleSheet, Button } from "react-native";
+import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 
 function AddFriends() {
 
     const [name, setName] = useState<string>('');
-    const [birthday, setBirthday] = useState<Date>(new Date())
+    const [birthday, setBirthday] = useState<Date>(new Date());
 
     const styles = StyleSheet.create({
         input: {
@@ -15,6 +15,11 @@ function AddFriends() {
           padding: 10,
         },
       });
+
+    const onDateChange = (event: DateTimePickerEvent, selectedDate: Date | undefined) => {
+        const currentDate = selectedDate || birthday;
+        setBirthday(currentDate);
+    };
 
     return (
         <ScrollView>
@@ -27,11 +32,13 @@ function AddFriends() {
                 placeholder="친구이름 입력"
             />
 
-            <Text>생년월일</Text>
-            <DateTimePicker 
+            <Text style={styles.input}>생일: {birthday.toLocaleDateString()}</Text>
+            
+            <DateTimePicker
                 value={birthday}
                 mode="date"
-                display="default"
+                display="spinner"
+                onChange={onDateChange}
             />
             
         </ScrollView>

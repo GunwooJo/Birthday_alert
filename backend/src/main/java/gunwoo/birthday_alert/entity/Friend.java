@@ -1,24 +1,24 @@
 package gunwoo.birthday_alert.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
-public class Member {
+public class Friend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id")
+    @Column(name = "friend_id")
     private Long id;
 
-    private String email;
-
-    private String password;
-
-    private String nickname;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     private String name;
+
+    private LocalDate birthday;
 }
